@@ -1,0 +1,2048 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="8e2226df-983f-4762-a7e1-526fa4e0195d" activeEnvironment="Default" name="Service Inicdent" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="756afcfb-b037-4fb4-98a5-99c7a2c1cae5" wsaVersion="NONE" name="Request_ENDPOINTPortType_binding" type="wsdl" bindingName="{http://xmlns.oracle.com/apps/crmCommon/content/outboundMessage/}Request_ENDPOINTPortType_binding" soapVersion="1_1" anonymous="optional" definition="https://AIC-Dev-brati.integration.ocp.oraclecloud.com:443/ic/ws/integration/v1/flows/osc/SERVICE_INCIDENTS/1.0/?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://AIC-Dev-brati.integration.ocp.oraclecloud.com:443/ic/ws/integration/v1/flows/osc/SERVICE_INCIDENTS/1.0/?wsdl"><con:part><con:url>https://AIC-Dev-brati.integration.ocp.oraclecloud.com:443/ic/ws/integration/v1/flows/osc/SERVICE_INCIDENTS/1.0/?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://xmlns.oracle.com/apps/crmCommon/content/outboundMessage/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/" xmlns:ns0="http://xmlns.oracle.com/apps/crmCommon/content/outboundMessage/types/" xmlns:ns1="http://xmlns.oracle.com/apps/crmCommon/content/outboundMessage/" xmlns:orafault="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.oracle.com/apps/scm/shipping/shipConfirm/shipmentAdvice/shipmentAdviceAsnServiceV2/" xmlns:types="http://xmlns.oracle.com/apps/scm/shipping/shipConfirm/shipmentAdvice/shipmentAdviceAsnServiceV2/types/">
+  <wsp:Policy wsu:Id="wss_username_token_service_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssUsernameToken10/>
+          </wsp:Policy>
+        </sp:UsernameToken>
+      </wsp:Policy>
+    </sp:SupportingTokens>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" sdoJava:package="oracle.jbo.common.service.types" targetNamespace="http://xmlns.oracle.com/adf/svc/types/" xmlns="http://xmlns.oracle.com/adf/svc/types/" xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="date-Date" sdoJava:instanceClass="java.sql.Date">
+        <xsd:restriction base="xsd:date"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="dateTime-Timestamp" sdoJava:instanceClass="java.sql.Timestamp">
+        <xsd:restriction base="xsd:dateTime"/>
+      </xsd:simpleType>
+      <xsd:complexType name="AmountType">
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:decimal">
+            <xsd:attribute name="currencyCode" type="xsd:normalizedString" use="optional"/>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:simpleType name="base64Binary-DataHandler" sdoJava:instanceClass="javax.activation.DataHandler">
+        <xsd:restriction base="xsd:base64Binary"/>
+      </xsd:simpleType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" sdoJava:package="oracle.apps.crmCommon.salesParties.commonService" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/salesParties/commonService/" xmlns="http://xmlns.oracle.com/apps/crmCommon/salesParties/commonService/" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+      <xsd:complexType name="PrimaryAddress">
+        <xsd:annotation>
+          <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+            <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+              <attribute>AddressId</attribute>
+              <attribute>LocationLocationId</attribute>
+            </key>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="AddressId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="AddressNumber" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SourceSystem" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SourceSystemReferenceValue" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LocationId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="PartyId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute1" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute2" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute3" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute4" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute5" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLine1" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLine2" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLine3" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLine4" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Building" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="City" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Country" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="County" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FloorNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PostalCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PostalPlus4Code" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Province" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="State" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Latitude" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="Longitude" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="Mailstop" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLinesPhonetic" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Comments" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Description" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DateValidated" nillable="true" type="ns0:date-Date"/>
+          <xsd:element minOccurs="0" name="HouseType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LocationDirections" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ValidatedFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="ValidationStatusCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FormattedAddress" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FormattedMultiLineAddress" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DeleteFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="CorpCurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurcyConvRateType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PartySiteEO_XSD_c" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SalesTeamMember">
+        <xsd:annotation>
+          <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+            <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+              <attribute>TeamMemberId</attribute>
+            </key>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="TeamMemberId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="SalesProfileId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="ResourceId" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="MemberFunctionCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AccessLevelCode" type="xsd:string"/>
+          <xsd:element default="false" minOccurs="0" name="LockAssignmentFlag" sdoXML:dataType="sdoJava:BooleanObject" type="xsd:boolean"/>
+          <xsd:element default="MANUAL" minOccurs="0" name="AssignmentTypeCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="StartDateActive" nillable="true" type="ns0:date-Date"/>
+          <xsd:element minOccurs="0" name="EndDateActive" nillable="true" type="ns0:date-Date"/>
+          <xsd:element minOccurs="0" name="ResourcePartyNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResourceEmailAddress" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResourceRoleName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResourceOrgName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResourceName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResourcePhoneNumber" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" sdoJava:package="sessiondef.extensibility.app.crmCommon.views.common" targetNamespace="/oracle/apps/cdm/foundation/custextn/views/common/" xmlns="/oracle/apps/cdm/foundation/custextn/views/common/" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+      <xsd:complexType name="AccountPlan_Account_c">
+        <xsd:annotation>
+          <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+            <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+              <attribute>Id</attribute>
+            </key>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="RecordName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreatedBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreationDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="LastUpdatedBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="ObjectVersionNumber" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="RecordNumber" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CpdrfVerSor" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="ConflictId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="CpdrfLastUpd" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CpdrfVerPillar" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="JobDefinitionPackage" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="RequestId" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="JobDefinitionName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurcyConvRateType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CorpCurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IsOwner" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AccountPlan_Id_Src_AccountPlan_cToAccountPlan_Account_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="Organization_Id_Tgt_OrganizationToAccountPlan_Account_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="AccountOwner_c" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" sdoJava:package="oracle.jbo.service.errors" targetNamespace="http://xmlns.oracle.com/adf/svc/errors/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sdoJava="commonj.sdo/java" xmlns:tns="http://xmlns.oracle.com/adf/svc/errors/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="ServiceErrorMessage" type="tns:ServiceErrorMessage"/>
+      <xs:complexType name="ServiceErrorMessage">
+        <xs:complexContent>
+          <xs:extension base="tns:ServiceMessage">
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="0" name="sdoObject" type="anyType"/>
+              <xs:element maxOccurs="1" minOccurs="0" name="exceptionClassName" type="string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ServiceMessage">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" name="code" type="string"/>
+          <xs:element maxOccurs="1" minOccurs="0" name="message" type="string"/>
+          <xs:element maxOccurs="1" minOccurs="0" name="severity" type="string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="detail" type="tns:ServiceMessage"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" sdoJava:package="sessiondef.extensibility.app.crmCommon.views.common" targetNamespace="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/" xmlns="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+      <xsd:complexType name="SWOTAnalysis_c">
+        <xsd:annotation>
+          <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+            <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+              <attribute>Id</attribute>
+            </key>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="RecordName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreatedBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreationDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="LastUpdatedBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="ObjectVersionNumber" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationProfile_Id_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="RecordNumber" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CpdrfVerSor" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="ConflictId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="CpdrfLastUpd" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CpdrfVerPillar" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="JobDefinitionPackage" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="RequestId" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="JobDefinitionName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurcyConvRateType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CorpCurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IsOwner" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EntryType_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EntryType_cMeaning" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SWOTEntry_c" nillable="true" type="ns0:base64Binary-DataHandler"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Incident_c">
+        <xsd:annotation>
+          <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+            <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+              <attribute>Id</attribute>
+            </key>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="RecordName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreatedBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreationDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="LastUpdatedBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="ObjectVersionNumber" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationProfile_Id_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="RecordNumber" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CpdrfVerSor" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="ConflictId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="CpdrfLastUpd" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CpdrfVerPillar" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="JobDefinitionPackage" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="RequestId" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="JobDefinitionName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurcyConvRateType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CorpCurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IsOwner" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/" xmlns="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:complexType name="NoteDFF">
+        <xsd:annotation>
+          <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+            <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+              <attribute>NoteId</attribute>
+            </key>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="NoteId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="__FLEX_Context" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="__FLEX_Context_DisplayValue" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="_FLEX_NumOfSegments" nillable="true" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" sdoJava:package="oracle.apps.crmCommon.notes.noteService" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" xmlns="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns:ns1="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/" xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/"/>
+      <xs:import namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+      <xsd:complexType name="Note">
+        <xsd:annotation>
+          <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+            <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+              <attribute>NoteId</attribute>
+            </key>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="NoteId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="SourceObjectCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SourceObjectId" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PartyName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="NoteTxt" type="ns0:base64Binary-DataHandler"/>
+          <xsd:element minOccurs="0" name="NoteTypeCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="VisibilityCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreatorPartyId" nillable="true" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="NoteAttributeCategory" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="NoteAttributeUid1" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="NoteAttributeUid2" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="NoteAttributeUid3" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="NoteAttributeUid4" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="NoteAttributeUid5" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="PartyId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="CorpCurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurcyConvRateType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ContactRelationshipId" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="UpdateFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="DeleteFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="Dff" sdoXML:dataType="sdo:DataObject" type="ns1:NoteDFF"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/salesParties/accountService/" xmlns="http://xmlns.oracle.com/apps/crmCommon/salesParties/accountService/" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns:ns1="http://xmlns.oracle.com/apps/crmCommon/salesParties/commonService/" xmlns:ns2="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" xmlns:ns3="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/" xmlns:ns4="/oracle/apps/cdm/foundation/custextn/views/common/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="/oracle/apps/cdm/foundation/custextn/views/common/"/>
+      <xs:import namespace="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/"/>
+      <xs:import namespace="http://xmlns.oracle.com/apps/crmCommon/notes/noteService"/>
+      <xs:import namespace="http://xmlns.oracle.com/apps/crmCommon/salesParties/commonService/"/>
+      <xs:import namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+      <xsd:complexType name="Account">
+        <xsd:annotation>
+          <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+            <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+              <attribute>PartyId</attribute>
+              <attribute>OrganizationProfileId</attribute>
+              <attribute>SalesProfileId</attribute>
+            </key>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="PartyId" sdoXML:dataType="sdoJava:LongObject" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="PartyNumber" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SourceSystem" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SourceSystemReferenceValue" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="UniqueNameSuffix" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PartyUniqueName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Type" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OwnerPartyId" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="OwnerPartyNumber" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OwnerEmailAddress" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OwnerName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PrimaryContactPartyId" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="PrimaryContactPartyNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PrimaryContactSourceSystem" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PrimaryContactSourceSystemReferenceValue" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PrimaryContactName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PrimaryContactEmail" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PrimaryContactPhone" nillable="true" type="xsd:string"/>
+          <xsd:element default="false" minOccurs="0" name="ExistingCustomerFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="ExistingCustomerFlagLastUpdateDate" nillable="true" type="ns0:date-Date"/>
+          <xsd:element default="false" minOccurs="0" name="NamedFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="LastAssignmentDate" nillable="true" type="ns0:date-Date"/>
+          <xsd:element minOccurs="0" name="LastAssignmentDateTime" nillable="true" type="ns0:dateTime-Timestamp"/>
+          <xsd:element default="false" minOccurs="0" name="AssignmentExceptionFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="SalesProfileStatus" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IndustryCodeType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IndustryCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ParentAccountPartyId" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="ParentAccountPartyNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ParentAccountSourceSystem" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ParentAccountSourceSystemReferenceValue" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ParentAccountName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="YearEstablished" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="ControlYear" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="YearIncorporated" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="StockSymbol" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FiscalYearendMonth" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurrentFiscalYearPotentialRevenueAmount" nillable="true" type="ns0:AmountType"/>
+          <xsd:element minOccurs="0" name="PreferredFunctionalCurrency" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AnalysisFiscalYear" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="NextFiscalYearPotentialRevenueAmount" nillable="true" type="ns0:AmountType"/>
+          <xsd:element minOccurs="0" name="TotalPaymentAmount" nillable="true" type="ns0:AmountType"/>
+          <xsd:element minOccurs="0" name="TaxpayerIdentificationNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CertificationLevel" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CertificationReasonCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DUNSNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DUNSCreditRating" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ParentDUNSNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DomesticUltimateDUNSNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="GlobalUltimateDUNSNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CEOName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CEOTitle" nillable="true" type="xsd:string"/>
+          <xsd:element default="false" minOccurs="0" name="PublicPrivateOwnershipFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="ImportIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ExportIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SmallBusinessIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="WomanOwnedIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element default="false" minOccurs="0" name="GeneralServicesAdministrationFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="MinorityOwnedIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MinorityOwnedType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="RentOrOwnIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LaborSurplusIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OutOfBusinessIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="HQBranchIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ParentOrSubsidiaryIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DisadvantageIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmployeesAtPrimaryAddress" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmployeesAtPrimaryAddressEstimation" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmployeesAtPrimaryAddressMinimum" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmployeesAtPrimaryAddressText" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmployeesTotal" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="TotalEmployeesEstimatedIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="TotalEmployeesIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="TotalEmployeesMinimumIndicator" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="TotalEmployeesText" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationSize" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PrincipalTitle" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PrincipalName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LegalStatus" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BusinessScope" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="RegistrationType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MissionStatement" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CorporationClass" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="GrowthStrategyDescription" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CongressionalDistrictCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LineOfBusiness" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="HomeCountry" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DoNotConfuseWith" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LocalActivityCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LocalActivityCodeType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LocalBusinessIdentifier" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LocalBusinessIdentifierType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SiebelLocation" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Comments" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BusinessReport" nillable="true" type="ns0:base64Binary-DataHandler"/>
+          <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CurcyConvRateType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CorpCurrencyCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DataCloudStatus" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastEnrichmentDate" nillable="true" type="ns0:date-Date"/>
+          <xsd:element minOccurs="0" name="PartyStatus" nillable="true" type="xsd:string"/>
+          <xsd:element default="HZ_WS" minOccurs="0" name="CreatedByModule" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp"/>
+          <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PreferredContactMethod" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PhoneCountryCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PhoneAreaCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PhoneNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PhoneExtension" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FormattedPhoneNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="RawPhoneNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FaxCountryCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FaxAreaCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FaxNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FaxExtension" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FormattedFaxNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="RawFaxNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmailFormat" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmailAddress" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="URL" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="RecordSet" nillable="true" type="xsd:string"/>
+          <xsd:element default="false" minOccurs="0" name="FavoriteAccountFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="UpdateFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="DeleteFlag" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="AddressNumber" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute1" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute2" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute3" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute4" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressElementAttribute5" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLine1" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLine2" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLine3" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLine4" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Building" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="City" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Country" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="County" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FloorNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PostalCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PostalPlus4Code" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Province" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="State" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Mailstop" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressLinesPhonetic" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PrimaryAddress" type="ns1:PrimaryAddress"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="SalesTeamMember" type="ns1:SalesTeamMember"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Note" type="ns2:Note"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_CustomerType_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_CustomerType_cMeaning" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_StrategicPlan_Id_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_StrategicPlan_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_StrategicContact_Id_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_StrategicContact_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_AccountPlanStatus_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_AccountPlanStatus_cMeaning" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_PlanManagerCalc_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_Industry_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_LSNumberOfBeds_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_LSNumberOfPhysicians_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_LSCallFrequency_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_LSRoute_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_LSRoute_cMeaning" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_LSAccountType_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_LSAccountType_cMeaning" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_InstitutionType_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_InstitutionType_cMeaning" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_DaaSTwitterProfileURL_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_DaaSTwitterFollowers_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_DaaSYouTubeURL_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_DaaSFaceBookURL_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_DaaSYouTubeViews_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_CurrentSatisfactionLevel_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_CurrentlyReferring_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_Latitude_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_Longitude_c" nillable="true" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_DaaSFacebookProfileURL_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganizationDEO_XSD_c" nillable="true" type="xsd:string"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="OrganizationDEO_SWOTAnalysisCollection_c" type="ns3:SWOTAnalysis_c"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="OrganizationDEO_IncidentCollection_c" type="ns3:Incident_c"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="OrganizationDEO_AccountPlan_Account_Tgt_OrganizationToAccountPlan_Account_c_Tgt" type="ns4:AccountPlan_Account_c"/>
+          <xsd:element minOccurs="0" name="SalesAccountEO_Route_c" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SalesAccountEO_VisitFreq_c" nillable="true" type="xsd:decimal"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/content/outboundMessage/types/" xmlns="http://xmlns.oracle.com/apps/crmCommon/content/outboundMessage/types/" xmlns:ns2="http://xmlns.oracle.com/apps/crmCommon/salesParties/accountService/" xmlns:ns3="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/" xmlns:tns0="http://xmlns.oracle.com/apps/crmCommon/content/outboundMessage/types/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/"/>
+      <xs:import namespace="http://xmlns.oracle.com/apps/crmCommon/salesParties/accountService/"/>
+      <xs:element name="process" type="tns0:processType"/>
+      <xs:complexType name="processType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Account" type="ns2:Account"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="processResponse" type="tns0:processResponseType"/>
+      <xs:complexType name="processResponseType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Incident" type="ns3:Incident_c"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="processRequestMessage">
+    <wsdl:part name="parameters" element="ns0:process"/>
+  </wsdl:message>
+  <wsdl:message name="processResponseMessage">
+    <wsdl:part name="parameters" element="ns0:processResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ServiceErrorMessage">
+    <wsdl:part name="parameters" element="errors:ServiceErrorMessage"/>
+  </wsdl:message>
+  <wsdl:portType name="Request_ENDPOINTPortType">
+    <wsdl:operation name="process">
+      <cloud:CloudOperation targetOperation="process" xmlns:cloud="http://xml.oracle.com/types"/>
+      <wsdl:input message="ns1:processRequestMessage"/>
+      <wsdl:output message="ns1:processResponseMessage"/>
+      <wsdl:fault name="ServiceErrorMessage" message="ns1:ServiceErrorMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Request_ENDPOINTPortType_binding" type="ns1:Request_ENDPOINTPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#wss_username_token_service_policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+    <wsdl:operation name="process">
+      <soap:operation soapAction="process"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Request_ENDPOINTPortType">
+    <wsdl:port name="Request_ENDPOINTPortType_pt" binding="ns1:Request_ENDPOINTPortType_binding">
+      <soap:address location="https://AIC-Dev-brati.integration.ocp.oraclecloud.com:443/ic/ws/integration/v1/flows/osc/SERVICE_INCIDENTS/1.0/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://AIC-Dev-brati.integration.ocp.oraclecloud.com:443/ic/ws/integration/v1/flows/osc/SERVICE_INCIDENTS/1.0/</con:endpoint></con:endpoints><con:operation id="5e8b903d-6196-48be-9aa5-cab35803740e" isOneWay="false" action="process" name="process" bindingOperationName="process" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="57e6b0e7-d6a7-4456-ae1f-48422d89adcf" name="Request 1" outgoingWss="Outgoing"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://AIC-Dev-brati.integration.ocp.oraclecloud.com:443/ic/ws/integration/v1/flows/osc/SERVICE_INCIDENTS/1.0/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:acc="http://xmlns.oracle.com/apps/crmCommon/salesParties/accountService/" xmlns:com="http://xmlns.oracle.com/apps/crmCommon/salesParties/commonService/" xmlns:com1="/oracle/apps/cdm/foundation/custextn/views/common/" xmlns:not="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" xmlns:not1="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/" xmlns:org="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://xmlns.oracle.com/apps/crmCommon/content/outboundMessage/types/">\r
+   <soapenv:Header>\r
+      
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <typ:process>\r
+         <!--Zero or more repetitions:-->\r
+         <typ:Account>\r
+            <!--Optional:-->\r
+            <acc:PartyId>5</acc:PartyId>\r
+            <!--Optional:-->\r
+            <acc:PartyNumber>?</acc:PartyNumber>\r
+            <!--Optional:-->\r
+            <acc:SourceSystem>?</acc:SourceSystem>\r
+            <!--Optional:-->\r
+            <acc:SourceSystemReferenceValue>?</acc:SourceSystemReferenceValue>\r
+            <!--Optional:-->\r
+            <acc:OrganizationName>?</acc:OrganizationName>\r
+            <!--Optional:-->\r
+            <acc:UniqueNameSuffix>?</acc:UniqueNameSuffix>\r
+            <!--Optional:-->\r
+            <acc:PartyUniqueName>?</acc:PartyUniqueName>\r
+            <!--Optional:-->\r
+            <acc:Type>?</acc:Type>\r
+            <!--Optional:-->\r
+            <acc:OwnerPartyId>?</acc:OwnerPartyId>\r
+            <!--Optional:-->\r
+            <acc:OwnerPartyNumber>?</acc:OwnerPartyNumber>\r
+            <!--Optional:-->\r
+            <acc:OwnerEmailAddress>?</acc:OwnerEmailAddress>\r
+            <!--Optional:-->\r
+            <acc:OwnerName>?</acc:OwnerName>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactPartyId>?</acc:PrimaryContactPartyId>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactPartyNumber>?</acc:PrimaryContactPartyNumber>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactSourceSystem>?</acc:PrimaryContactSourceSystem>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactSourceSystemReferenceValue>?</acc:PrimaryContactSourceSystemReferenceValue>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactName>?</acc:PrimaryContactName>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactEmail>?</acc:PrimaryContactEmail>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactPhone>?</acc:PrimaryContactPhone>\r
+            <!--Optional:-->\r
+            <acc:ExistingCustomerFlag>false</acc:ExistingCustomerFlag>\r
+            <!--Optional:-->\r
+            <acc:ExistingCustomerFlagLastUpdateDate>?</acc:ExistingCustomerFlagLastUpdateDate>\r
+            <!--Optional:-->\r
+            <acc:NamedFlag>false</acc:NamedFlag>\r
+            <!--Optional:-->\r
+            <acc:LastAssignmentDate>?</acc:LastAssignmentDate>\r
+            <!--Optional:-->\r
+            <acc:LastAssignmentDateTime>?</acc:LastAssignmentDateTime>\r
+            <!--Optional:-->\r
+            <acc:AssignmentExceptionFlag>false</acc:AssignmentExceptionFlag>\r
+            <!--Optional:-->\r
+            <acc:SalesProfileStatus>?</acc:SalesProfileStatus>\r
+            <!--Optional:-->\r
+            <acc:IndustryCodeType>?</acc:IndustryCodeType>\r
+            <!--Optional:-->\r
+            <acc:IndustryCode>?</acc:IndustryCode>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountPartyId>?</acc:ParentAccountPartyId>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountPartyNumber>?</acc:ParentAccountPartyNumber>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountSourceSystem>?</acc:ParentAccountSourceSystem>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountSourceSystemReferenceValue>?</acc:ParentAccountSourceSystemReferenceValue>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountName>?</acc:ParentAccountName>\r
+            <!--Optional:-->\r
+            <acc:YearEstablished>?</acc:YearEstablished>\r
+            <!--Optional:-->\r
+            <acc:ControlYear>?</acc:ControlYear>\r
+            <!--Optional:-->\r
+            <acc:YearIncorporated>?</acc:YearIncorporated>\r
+            <!--Optional:-->\r
+            <acc:StockSymbol>?</acc:StockSymbol>\r
+            <!--Optional:-->\r
+            <acc:FiscalYearendMonth>?</acc:FiscalYearendMonth>\r
+            <!--Optional:-->\r
+            <acc:CurrentFiscalYearPotentialRevenueAmount currencyCode="?">?</acc:CurrentFiscalYearPotentialRevenueAmount>\r
+            <!--Optional:-->\r
+            <acc:PreferredFunctionalCurrency>?</acc:PreferredFunctionalCurrency>\r
+            <!--Optional:-->\r
+            <acc:AnalysisFiscalYear>?</acc:AnalysisFiscalYear>\r
+            <!--Optional:-->\r
+            <acc:NextFiscalYearPotentialRevenueAmount currencyCode="?">?</acc:NextFiscalYearPotentialRevenueAmount>\r
+            <!--Optional:-->\r
+            <acc:TotalPaymentAmount currencyCode="?">?</acc:TotalPaymentAmount>\r
+            <!--Optional:-->\r
+            <acc:TaxpayerIdentificationNumber>?</acc:TaxpayerIdentificationNumber>\r
+            <!--Optional:-->\r
+            <acc:CertificationLevel>?</acc:CertificationLevel>\r
+            <!--Optional:-->\r
+            <acc:CertificationReasonCode>?</acc:CertificationReasonCode>\r
+            <!--Optional:-->\r
+            <acc:DUNSNumber>?</acc:DUNSNumber>\r
+            <!--Optional:-->\r
+            <acc:DUNSCreditRating>?</acc:DUNSCreditRating>\r
+            <!--Optional:-->\r
+            <acc:ParentDUNSNumber>?</acc:ParentDUNSNumber>\r
+            <!--Optional:-->\r
+            <acc:DomesticUltimateDUNSNumber>?</acc:DomesticUltimateDUNSNumber>\r
+            <!--Optional:-->\r
+            <acc:GlobalUltimateDUNSNumber>?</acc:GlobalUltimateDUNSNumber>\r
+            <!--Optional:-->\r
+            <acc:CEOName>?</acc:CEOName>\r
+            <!--Optional:-->\r
+            <acc:CEOTitle>?</acc:CEOTitle>\r
+            <!--Optional:-->\r
+            <acc:PublicPrivateOwnershipFlag>false</acc:PublicPrivateOwnershipFlag>\r
+            <!--Optional:-->\r
+            <acc:ImportIndicator>?</acc:ImportIndicator>\r
+            <!--Optional:-->\r
+            <acc:ExportIndicator>?</acc:ExportIndicator>\r
+            <!--Optional:-->\r
+            <acc:SmallBusinessIndicator>?</acc:SmallBusinessIndicator>\r
+            <!--Optional:-->\r
+            <acc:WomanOwnedIndicator>?</acc:WomanOwnedIndicator>\r
+            <!--Optional:-->\r
+            <acc:GeneralServicesAdministrationFlag>false</acc:GeneralServicesAdministrationFlag>\r
+            <!--Optional:-->\r
+            <acc:MinorityOwnedIndicator>?</acc:MinorityOwnedIndicator>\r
+            <!--Optional:-->\r
+            <acc:MinorityOwnedType>?</acc:MinorityOwnedType>\r
+            <!--Optional:-->\r
+            <acc:RentOrOwnIndicator>?</acc:RentOrOwnIndicator>\r
+            <!--Optional:-->\r
+            <acc:LaborSurplusIndicator>?</acc:LaborSurplusIndicator>\r
+            <!--Optional:-->\r
+            <acc:OutOfBusinessIndicator>?</acc:OutOfBusinessIndicator>\r
+            <!--Optional:-->\r
+            <acc:HQBranchIndicator>?</acc:HQBranchIndicator>\r
+            <!--Optional:-->\r
+            <acc:ParentOrSubsidiaryIndicator>?</acc:ParentOrSubsidiaryIndicator>\r
+            <!--Optional:-->\r
+            <acc:DisadvantageIndicator>?</acc:DisadvantageIndicator>\r
+            <!--Optional:-->\r
+            <acc:EmployeesAtPrimaryAddress>?</acc:EmployeesAtPrimaryAddress>\r
+            <!--Optional:-->\r
+            <acc:EmployeesAtPrimaryAddressEstimation>?</acc:EmployeesAtPrimaryAddressEstimation>\r
+            <!--Optional:-->\r
+            <acc:EmployeesAtPrimaryAddressMinimum>?</acc:EmployeesAtPrimaryAddressMinimum>\r
+            <!--Optional:-->\r
+            <acc:EmployeesAtPrimaryAddressText>?</acc:EmployeesAtPrimaryAddressText>\r
+            <!--Optional:-->\r
+            <acc:EmployeesTotal>?</acc:EmployeesTotal>\r
+            <!--Optional:-->\r
+            <acc:TotalEmployeesEstimatedIndicator>?</acc:TotalEmployeesEstimatedIndicator>\r
+            <!--Optional:-->\r
+            <acc:TotalEmployeesIndicator>?</acc:TotalEmployeesIndicator>\r
+            <!--Optional:-->\r
+            <acc:TotalEmployeesMinimumIndicator>?</acc:TotalEmployeesMinimumIndicator>\r
+            <!--Optional:-->\r
+            <acc:TotalEmployeesText>?</acc:TotalEmployeesText>\r
+            <!--Optional:-->\r
+            <acc:OrganizationSize>?</acc:OrganizationSize>\r
+            <!--Optional:-->\r
+            <acc:OrganizationType>?</acc:OrganizationType>\r
+            <!--Optional:-->\r
+            <acc:PrincipalTitle>?</acc:PrincipalTitle>\r
+            <!--Optional:-->\r
+            <acc:PrincipalName>?</acc:PrincipalName>\r
+            <!--Optional:-->\r
+            <acc:LegalStatus>?</acc:LegalStatus>\r
+            <!--Optional:-->\r
+            <acc:BusinessScope>?</acc:BusinessScope>\r
+            <!--Optional:-->\r
+            <acc:RegistrationType>?</acc:RegistrationType>\r
+            <!--Optional:-->\r
+            <acc:MissionStatement>?</acc:MissionStatement>\r
+            <!--Optional:-->\r
+            <acc:CorporationClass>?</acc:CorporationClass>\r
+            <!--Optional:-->\r
+            <acc:GrowthStrategyDescription>?</acc:GrowthStrategyDescription>\r
+            <!--Optional:-->\r
+            <acc:CongressionalDistrictCode>?</acc:CongressionalDistrictCode>\r
+            <!--Optional:-->\r
+            <acc:LineOfBusiness>?</acc:LineOfBusiness>\r
+            <!--Optional:-->\r
+            <acc:HomeCountry>?</acc:HomeCountry>\r
+            <!--Optional:-->\r
+            <acc:DoNotConfuseWith>?</acc:DoNotConfuseWith>\r
+            <!--Optional:-->\r
+            <acc:LocalActivityCode>?</acc:LocalActivityCode>\r
+            <!--Optional:-->\r
+            <acc:LocalActivityCodeType>?</acc:LocalActivityCodeType>\r
+            <!--Optional:-->\r
+            <acc:LocalBusinessIdentifier>?</acc:LocalBusinessIdentifier>\r
+            <!--Optional:-->\r
+            <acc:LocalBusinessIdentifierType>?</acc:LocalBusinessIdentifierType>\r
+            <!--Optional:-->\r
+            <acc:SiebelLocation>?</acc:SiebelLocation>\r
+            <!--Optional:-->\r
+            <acc:Comments>?</acc:Comments>\r
+            <!--Optional:-->\r
+            <acc:BusinessReport>cid:882644555452</acc:BusinessReport>\r
+            <!--Optional:-->\r
+            <acc:CurrencyCode>?</acc:CurrencyCode>\r
+            <!--Optional:-->\r
+            <acc:CurcyConvRateType>?</acc:CurcyConvRateType>\r
+            <!--Optional:-->\r
+            <acc:CorpCurrencyCode>?</acc:CorpCurrencyCode>\r
+            <!--Optional:-->\r
+            <acc:DataCloudStatus>?</acc:DataCloudStatus>\r
+            <!--Optional:-->\r
+            <acc:LastEnrichmentDate>?</acc:LastEnrichmentDate>\r
+            <!--Optional:-->\r
+            <acc:PartyStatus>?</acc:PartyStatus>\r
+            <!--Optional:-->\r
+            <acc:CreatedByModule>HZ_WS</acc:CreatedByModule>\r
+            <!--Optional:-->\r
+            <acc:CreatedBy>?</acc:CreatedBy>\r
+            <!--Optional:-->\r
+            <acc:CreationDate>?</acc:CreationDate>\r
+            <!--Optional:-->\r
+            <acc:LastUpdateDate>?</acc:LastUpdateDate>\r
+            <!--Optional:-->\r
+            <acc:LastUpdateLogin>?</acc:LastUpdateLogin>\r
+            <!--Optional:-->\r
+            <acc:LastUpdatedBy>?</acc:LastUpdatedBy>\r
+            <!--Optional:-->\r
+            <acc:PreferredContactMethod>?</acc:PreferredContactMethod>\r
+            <!--Optional:-->\r
+            <acc:PhoneCountryCode>?</acc:PhoneCountryCode>\r
+            <!--Optional:-->\r
+            <acc:PhoneAreaCode>?</acc:PhoneAreaCode>\r
+            <!--Optional:-->\r
+            <acc:PhoneNumber>?</acc:PhoneNumber>\r
+            <!--Optional:-->\r
+            <acc:PhoneExtension>?</acc:PhoneExtension>\r
+            <!--Optional:-->\r
+            <acc:FormattedPhoneNumber>?</acc:FormattedPhoneNumber>\r
+            <!--Optional:-->\r
+            <acc:RawPhoneNumber>?</acc:RawPhoneNumber>\r
+            <!--Optional:-->\r
+            <acc:FaxCountryCode>?</acc:FaxCountryCode>\r
+            <!--Optional:-->\r
+            <acc:FaxAreaCode>?</acc:FaxAreaCode>\r
+            <!--Optional:-->\r
+            <acc:FaxNumber>?</acc:FaxNumber>\r
+            <!--Optional:-->\r
+            <acc:FaxExtension>?</acc:FaxExtension>\r
+            <!--Optional:-->\r
+            <acc:FormattedFaxNumber>?</acc:FormattedFaxNumber>\r
+            <!--Optional:-->\r
+            <acc:RawFaxNumber>?</acc:RawFaxNumber>\r
+            <!--Optional:-->\r
+            <acc:EmailFormat>?</acc:EmailFormat>\r
+            <!--Optional:-->\r
+            <acc:EmailAddress>?</acc:EmailAddress>\r
+            <!--Optional:-->\r
+            <acc:URL>?</acc:URL>\r
+            <!--Optional:-->\r
+            <acc:RecordSet>?</acc:RecordSet>\r
+            <!--Optional:-->\r
+            <acc:FavoriteAccountFlag>false</acc:FavoriteAccountFlag>\r
+            <!--Optional:-->\r
+            <acc:UpdateFlag>?</acc:UpdateFlag>\r
+            <!--Optional:-->\r
+            <acc:DeleteFlag>?</acc:DeleteFlag>\r
+            <!--Optional:-->\r
+            <acc:AddressNumber>?</acc:AddressNumber>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute1>?</acc:AddressElementAttribute1>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute2>?</acc:AddressElementAttribute2>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute3>?</acc:AddressElementAttribute3>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute4>?</acc:AddressElementAttribute4>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute5>?</acc:AddressElementAttribute5>\r
+            <!--Optional:-->\r
+            <acc:AddressLine1>?</acc:AddressLine1>\r
+            <!--Optional:-->\r
+            <acc:AddressLine2>?</acc:AddressLine2>\r
+            <!--Optional:-->\r
+            <acc:AddressLine3>?</acc:AddressLine3>\r
+            <!--Optional:-->\r
+            <acc:AddressLine4>?</acc:AddressLine4>\r
+            <!--Optional:-->\r
+            <acc:Building>?</acc:Building>\r
+            <!--Optional:-->\r
+            <acc:City>?</acc:City>\r
+            <!--Optional:-->\r
+            <acc:Country>?</acc:Country>\r
+            <!--Optional:-->\r
+            <acc:County>?</acc:County>\r
+            <!--Optional:-->\r
+            <acc:FloorNumber>?</acc:FloorNumber>\r
+            <!--Optional:-->\r
+            <acc:PostalCode>?</acc:PostalCode>\r
+            <!--Optional:-->\r
+            <acc:PostalPlus4Code>?</acc:PostalPlus4Code>\r
+            <!--Optional:-->\r
+            <acc:Province>?</acc:Province>\r
+            <!--Optional:-->\r
+            <acc:State>?</acc:State>\r
+            <!--Optional:-->\r
+            <acc:Mailstop>?</acc:Mailstop>\r
+            <!--Optional:-->\r
+            <acc:AddressLinesPhonetic>?</acc:AddressLinesPhonetic>\r
+            <!--Optional:-->\r
+            <acc:AddressType>?</acc:AddressType>\r
+            <!--Optional:-->\r
+            <acc:PrimaryAddress>\r
+               <!--Optional:-->\r
+               <com:AddressId>?</com:AddressId>\r
+               <!--Optional:-->\r
+               <com:AddressNumber>?</com:AddressNumber>\r
+               <!--Optional:-->\r
+               <com:SourceSystem>?</com:SourceSystem>\r
+               <!--Optional:-->\r
+               <com:SourceSystemReferenceValue>?</com:SourceSystemReferenceValue>\r
+               <!--Optional:-->\r
+               <com:LocationId>?</com:LocationId>\r
+               <!--Optional:-->\r
+               <com:PartyId>?</com:PartyId>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute1>?</com:AddressElementAttribute1>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute2>?</com:AddressElementAttribute2>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute3>?</com:AddressElementAttribute3>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute4>?</com:AddressElementAttribute4>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute5>?</com:AddressElementAttribute5>\r
+               <!--Optional:-->\r
+               <com:AddressLine1>?</com:AddressLine1>\r
+               <!--Optional:-->\r
+               <com:AddressLine2>?</com:AddressLine2>\r
+               <!--Optional:-->\r
+               <com:AddressLine3>?</com:AddressLine3>\r
+               <!--Optional:-->\r
+               <com:AddressLine4>?</com:AddressLine4>\r
+               <!--Optional:-->\r
+               <com:Building>?</com:Building>\r
+               <!--Optional:-->\r
+               <com:City>?</com:City>\r
+               <!--Optional:-->\r
+               <com:Country>?</com:Country>\r
+               <!--Optional:-->\r
+               <com:County>?</com:County>\r
+               <!--Optional:-->\r
+               <com:FloorNumber>?</com:FloorNumber>\r
+               <!--Optional:-->\r
+               <com:PostalCode>?</com:PostalCode>\r
+               <!--Optional:-->\r
+               <com:PostalPlus4Code>?</com:PostalPlus4Code>\r
+               <!--Optional:-->\r
+               <com:Province>?</com:Province>\r
+               <!--Optional:-->\r
+               <com:State>?</com:State>\r
+               <!--Optional:-->\r
+               <com:Latitude>?</com:Latitude>\r
+               <!--Optional:-->\r
+               <com:Longitude>?</com:Longitude>\r
+               <!--Optional:-->\r
+               <com:Mailstop>?</com:Mailstop>\r
+               <!--Optional:-->\r
+               <com:AddressLinesPhonetic>?</com:AddressLinesPhonetic>\r
+               <!--Optional:-->\r
+               <com:Comments>?</com:Comments>\r
+               <!--Optional:-->\r
+               <com:Description>?</com:Description>\r
+               <!--Optional:-->\r
+               <com:DateValidated>?</com:DateValidated>\r
+               <!--Optional:-->\r
+               <com:HouseType>?</com:HouseType>\r
+               <!--Optional:-->\r
+               <com:LocationDirections>?</com:LocationDirections>\r
+               <!--Optional:-->\r
+               <com:ValidatedFlag>?</com:ValidatedFlag>\r
+               <!--Optional:-->\r
+               <com:ValidationStatusCode>?</com:ValidationStatusCode>\r
+               <!--Optional:-->\r
+               <com:FormattedAddress>?</com:FormattedAddress>\r
+               <!--Optional:-->\r
+               <com:FormattedMultiLineAddress>?</com:FormattedMultiLineAddress>\r
+               <!--Optional:-->\r
+               <com:CreatedBy>?</com:CreatedBy>\r
+               <!--Optional:-->\r
+               <com:CreationDate>?</com:CreationDate>\r
+               <!--Optional:-->\r
+               <com:LastUpdateDate>?</com:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <com:LastUpdateLogin>?</com:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <com:LastUpdatedBy>?</com:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <com:DeleteFlag>?</com:DeleteFlag>\r
+               <!--Optional:-->\r
+               <com:CorpCurrencyCode>?</com:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <com:CurcyConvRateType>?</com:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <com:CurrencyCode>?</com:CurrencyCode>\r
+               <!--Optional:-->\r
+               <com:PartySiteEO_XSD_c>?</com:PartySiteEO_XSD_c>\r
+            </acc:PrimaryAddress>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:SalesTeamMember>\r
+               <!--Optional:-->\r
+               <com:TeamMemberId>?</com:TeamMemberId>\r
+               <!--Optional:-->\r
+               <com:SalesProfileId>?</com:SalesProfileId>\r
+               <!--Optional:-->\r
+               <com:ResourceId>?</com:ResourceId>\r
+               <!--Optional:-->\r
+               <com:MemberFunctionCode>?</com:MemberFunctionCode>\r
+               <!--Optional:-->\r
+               <com:AccessLevelCode>?</com:AccessLevelCode>\r
+               <!--Optional:-->\r
+               <com:LockAssignmentFlag>false</com:LockAssignmentFlag>\r
+               <!--Optional:-->\r
+               <com:AssignmentTypeCode>MANUAL</com:AssignmentTypeCode>\r
+               <!--Optional:-->\r
+               <com:CreationDate>?</com:CreationDate>\r
+               <!--Optional:-->\r
+               <com:CreatedBy>?</com:CreatedBy>\r
+               <!--Optional:-->\r
+               <com:LastUpdateDate>?</com:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <com:LastUpdateLogin>?</com:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <com:LastUpdatedBy>?</com:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <com:UserLastUpdateDate>?</com:UserLastUpdateDate>\r
+               <!--Optional:-->\r
+               <com:StartDateActive>?</com:StartDateActive>\r
+               <!--Optional:-->\r
+               <com:EndDateActive>?</com:EndDateActive>\r
+               <!--Optional:-->\r
+               <com:ResourcePartyNumber>?</com:ResourcePartyNumber>\r
+               <!--Optional:-->\r
+               <com:ResourceEmailAddress>?</com:ResourceEmailAddress>\r
+               <!--Optional:-->\r
+               <com:ResourceRoleName>?</com:ResourceRoleName>\r
+               <!--Optional:-->\r
+               <com:ResourceOrgName>?</com:ResourceOrgName>\r
+               <!--Optional:-->\r
+               <com:ResourceName>?</com:ResourceName>\r
+               <!--Optional:-->\r
+               <com:ResourcePhoneNumber>?</com:ResourcePhoneNumber>\r
+            </acc:SalesTeamMember>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:Note>\r
+               <!--Optional:-->\r
+               <not:NoteId>?</not:NoteId>\r
+               <!--Optional:-->\r
+               <not:SourceObjectCode>?</not:SourceObjectCode>\r
+               <!--Optional:-->\r
+               <not:SourceObjectId>?</not:SourceObjectId>\r
+               <!--Optional:-->\r
+               <not:PartyName>?</not:PartyName>\r
+               <!--Optional:-->\r
+               <not:NoteTxt>cid:1446406896146</not:NoteTxt>\r
+               <!--Optional:-->\r
+               <not:NoteTypeCode>?</not:NoteTypeCode>\r
+               <!--Optional:-->\r
+               <not:VisibilityCode>?</not:VisibilityCode>\r
+               <!--Optional:-->\r
+               <not:CreatorPartyId>?</not:CreatorPartyId>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeCategory>?</not:NoteAttributeCategory>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid1>?</not:NoteAttributeUid1>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid2>?</not:NoteAttributeUid2>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid3>?</not:NoteAttributeUid3>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid4>?</not:NoteAttributeUid4>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid5>?</not:NoteAttributeUid5>\r
+               <!--Optional:-->\r
+               <not:CreatedBy>?</not:CreatedBy>\r
+               <!--Optional:-->\r
+               <not:CreationDate>?</not:CreationDate>\r
+               <!--Optional:-->\r
+               <not:LastUpdateDate>?</not:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <not:PartyId>?</not:PartyId>\r
+               <!--Optional:-->\r
+               <not:CorpCurrencyCode>?</not:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <not:CurcyConvRateType>?</not:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <not:CurrencyCode>?</not:CurrencyCode>\r
+               <!--Optional:-->\r
+               <not:ContactRelationshipId>?</not:ContactRelationshipId>\r
+               <!--Optional:-->\r
+               <not:LastUpdatedBy>?</not:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <not:LastUpdateLogin>?</not:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <not:UpdateFlag>?</not:UpdateFlag>\r
+               <!--Optional:-->\r
+               <not:DeleteFlag>?</not:DeleteFlag>\r
+               <!--Optional:-->\r
+               <not:Dff>\r
+                  <!--Optional:-->\r
+                  <not1:NoteId>?</not1:NoteId>\r
+                  <!--Optional:-->\r
+                  <not1:__FLEX_Context>?</not1:__FLEX_Context>\r
+                  <!--Optional:-->\r
+                  <not1:__FLEX_Context_DisplayValue>?</not1:__FLEX_Context_DisplayValue>\r
+                  <!--Optional:-->\r
+                  <not1:_FLEX_NumOfSegments>?</not1:_FLEX_NumOfSegments>\r
+               </not:Dff>\r
+            </acc:Note>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_CustomerType_c>?</acc:OrganizationDEO_CustomerType_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_CustomerType_cMeaning>?</acc:OrganizationDEO_CustomerType_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_StrategicPlan_Id_c>?</acc:OrganizationDEO_StrategicPlan_Id_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_StrategicPlan_c>?</acc:OrganizationDEO_StrategicPlan_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_StrategicContact_Id_c>?</acc:OrganizationDEO_StrategicContact_Id_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_StrategicContact_c>?</acc:OrganizationDEO_StrategicContact_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_AccountPlanStatus_c>?</acc:OrganizationDEO_AccountPlanStatus_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_AccountPlanStatus_cMeaning>?</acc:OrganizationDEO_AccountPlanStatus_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_PlanManagerCalc_c>?</acc:OrganizationDEO_PlanManagerCalc_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_Industry_c>?</acc:OrganizationDEO_Industry_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSNumberOfBeds_c>?</acc:OrganizationDEO_LSNumberOfBeds_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSNumberOfPhysicians_c>?</acc:OrganizationDEO_LSNumberOfPhysicians_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSCallFrequency_c>?</acc:OrganizationDEO_LSCallFrequency_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSRoute_c>?</acc:OrganizationDEO_LSRoute_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSRoute_cMeaning>?</acc:OrganizationDEO_LSRoute_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSAccountType_c>?</acc:OrganizationDEO_LSAccountType_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSAccountType_cMeaning>?</acc:OrganizationDEO_LSAccountType_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_InstitutionType_c>?</acc:OrganizationDEO_InstitutionType_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_InstitutionType_cMeaning>?</acc:OrganizationDEO_InstitutionType_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSTwitterProfileURL_c>?</acc:OrganizationDEO_DaaSTwitterProfileURL_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSTwitterFollowers_c>?</acc:OrganizationDEO_DaaSTwitterFollowers_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSYouTubeURL_c>?</acc:OrganizationDEO_DaaSYouTubeURL_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSFaceBookURL_c>?</acc:OrganizationDEO_DaaSFaceBookURL_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSYouTubeViews_c>?</acc:OrganizationDEO_DaaSYouTubeViews_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_CurrentSatisfactionLevel_c>?</acc:OrganizationDEO_CurrentSatisfactionLevel_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_CurrentlyReferring_c>?</acc:OrganizationDEO_CurrentlyReferring_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_Latitude_c>?</acc:OrganizationDEO_Latitude_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_Longitude_c>?</acc:OrganizationDEO_Longitude_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSFacebookProfileURL_c>?</acc:OrganizationDEO_DaaSFacebookProfileURL_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_XSD_c>?</acc:OrganizationDEO_XSD_c>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:OrganizationDEO_SWOTAnalysisCollection_c>\r
+               <!--Optional:-->\r
+               <org:Id>?</org:Id>\r
+               <!--Optional:-->\r
+               <org:RecordName>?</org:RecordName>\r
+               <!--Optional:-->\r
+               <org:CreatedBy>?</org:CreatedBy>\r
+               <!--Optional:-->\r
+               <org:CreationDate>?</org:CreationDate>\r
+               <!--Optional:-->\r
+               <org:LastUpdatedBy>?</org:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <org:LastUpdateDate>?</org:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <org:ObjectVersionNumber>?</org:ObjectVersionNumber>\r
+               <!--Optional:-->\r
+               <org:OrganizationProfile_Id_c>?</org:OrganizationProfile_Id_c>\r
+               <!--Optional:-->\r
+               <org:RecordNumber>?</org:RecordNumber>\r
+               <!--Optional:-->\r
+               <org:LastUpdateLogin>?</org:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <org:CpdrfVerSor>?</org:CpdrfVerSor>\r
+               <!--Optional:-->\r
+               <org:ConflictId>?</org:ConflictId>\r
+               <!--Optional:-->\r
+               <org:UserLastUpdateDate>?</org:UserLastUpdateDate>\r
+               <!--Optional:-->\r
+               <org:CpdrfLastUpd>?</org:CpdrfLastUpd>\r
+               <!--Optional:-->\r
+               <org:CpdrfVerPillar>?</org:CpdrfVerPillar>\r
+               <!--Optional:-->\r
+               <org:JobDefinitionPackage>?</org:JobDefinitionPackage>\r
+               <!--Optional:-->\r
+               <org:RequestId>?</org:RequestId>\r
+               <!--Optional:-->\r
+               <org:JobDefinitionName>?</org:JobDefinitionName>\r
+               <!--Optional:-->\r
+               <org:CurrencyCode>?</org:CurrencyCode>\r
+               <!--Optional:-->\r
+               <org:CurcyConvRateType>?</org:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <org:CorpCurrencyCode>?</org:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <org:IsOwner>?</org:IsOwner>\r
+               <!--Optional:-->\r
+               <org:EntryType_c>?</org:EntryType_c>\r
+               <!--Optional:-->\r
+               <org:EntryType_cMeaning>?</org:EntryType_cMeaning>\r
+               <!--Optional:-->\r
+               <org:SWOTEntry_c>cid:226823723045</org:SWOTEntry_c>\r
+            </acc:OrganizationDEO_SWOTAnalysisCollection_c>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:OrganizationDEO_IncidentCollection_c>\r
+               <!--Optional:-->\r
+               <org:Id>?</org:Id>\r
+               <!--Optional:-->\r
+               <org:RecordName>?</org:RecordName>\r
+               <!--Optional:-->\r
+               <org:CreatedBy>?</org:CreatedBy>\r
+               <!--Optional:-->\r
+               <org:CreationDate>?</org:CreationDate>\r
+               <!--Optional:-->\r
+               <org:LastUpdatedBy>?</org:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <org:LastUpdateDate>?</org:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <org:ObjectVersionNumber>?</org:ObjectVersionNumber>\r
+               <!--Optional:-->\r
+               <org:OrganizationProfile_Id_c>?</org:OrganizationProfile_Id_c>\r
+               <!--Optional:-->\r
+               <org:RecordNumber>?</org:RecordNumber>\r
+               <!--Optional:-->\r
+               <org:LastUpdateLogin>?</org:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <org:CpdrfVerSor>?</org:CpdrfVerSor>\r
+               <!--Optional:-->\r
+               <org:ConflictId>?</org:ConflictId>\r
+               <!--Optional:-->\r
+               <org:UserLastUpdateDate>?</org:UserLastUpdateDate>\r
+               <!--Optional:-->\r
+               <org:CpdrfLastUpd>?</org:CpdrfLastUpd>\r
+               <!--Optional:-->\r
+               <org:CpdrfVerPillar>?</org:CpdrfVerPillar>\r
+               <!--Optional:-->\r
+               <org:JobDefinitionPackage>?</org:JobDefinitionPackage>\r
+               <!--Optional:-->\r
+               <org:RequestId>?</org:RequestId>\r
+               <!--Optional:-->\r
+               <org:JobDefinitionName>?</org:JobDefinitionName>\r
+               <!--Optional:-->\r
+               <org:CurrencyCode>?</org:CurrencyCode>\r
+               <!--Optional:-->\r
+               <org:CurcyConvRateType>?</org:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <org:CorpCurrencyCode>?</org:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <org:IsOwner>?</org:IsOwner>\r
+            </acc:OrganizationDEO_IncidentCollection_c>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:OrganizationDEO_AccountPlan_Account_Tgt_OrganizationToAccountPlan_Account_c_Tgt>\r
+               <!--Optional:-->\r
+               <com1:Id>?</com1:Id>\r
+               <!--Optional:-->\r
+               <com1:RecordName>?</com1:RecordName>\r
+               <!--Optional:-->\r
+               <com1:CreatedBy>?</com1:CreatedBy>\r
+               <!--Optional:-->\r
+               <com1:CreationDate>?</com1:CreationDate>\r
+               <!--Optional:-->\r
+               <com1:LastUpdatedBy>?</com1:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <com1:LastUpdateDate>?</com1:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <com1:ObjectVersionNumber>?</com1:ObjectVersionNumber>\r
+               <!--Optional:-->\r
+               <com1:RecordNumber>?</com1:RecordNumber>\r
+               <!--Optional:-->\r
+               <com1:LastUpdateLogin>?</com1:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <com1:CpdrfVerSor>?</com1:CpdrfVerSor>\r
+               <!--Optional:-->\r
+               <com1:ConflictId>?</com1:ConflictId>\r
+               <!--Optional:-->\r
+               <com1:UserLastUpdateDate>?</com1:UserLastUpdateDate>\r
+               <!--Optional:-->\r
+               <com1:CpdrfLastUpd>?</com1:CpdrfLastUpd>\r
+               <!--Optional:-->\r
+               <com1:CpdrfVerPillar>?</com1:CpdrfVerPillar>\r
+               <!--Optional:-->\r
+               <com1:JobDefinitionPackage>?</com1:JobDefinitionPackage>\r
+               <!--Optional:-->\r
+               <com1:RequestId>?</com1:RequestId>\r
+               <!--Optional:-->\r
+               <com1:JobDefinitionName>?</com1:JobDefinitionName>\r
+               <!--Optional:-->\r
+               <com1:CurrencyCode>?</com1:CurrencyCode>\r
+               <!--Optional:-->\r
+               <com1:CurcyConvRateType>?</com1:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <com1:CorpCurrencyCode>?</com1:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <com1:IsOwner>?</com1:IsOwner>\r
+               <!--Optional:-->\r
+               <com1:AccountPlan_Id_Src_AccountPlan_cToAccountPlan_Account_c>?</com1:AccountPlan_Id_Src_AccountPlan_cToAccountPlan_Account_c>\r
+               <!--Optional:-->\r
+               <com1:Organization_Id_Tgt_OrganizationToAccountPlan_Account_c>?</com1:Organization_Id_Tgt_OrganizationToAccountPlan_Account_c>\r
+               <!--Optional:-->\r
+               <com1:AccountOwner_c>?</com1:AccountOwner_c>\r
+            </acc:OrganizationDEO_AccountPlan_Account_Tgt_OrganizationToAccountPlan_Account_c_Tgt>\r
+            <!--Optional:-->\r
+            <acc:SalesAccountEO_Route_c>?</acc:SalesAccountEO_Route_c>\r
+            <!--Optional:-->\r
+            <acc:SalesAccountEO_VisitFreq_c>?</acc:SalesAccountEO_VisitFreq_c>\r
+         </typ:Account>\r
+      </typ:process>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>bratisankar1@gmail.com</con:username><con:password>MyOracleCloudP@ssword123</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="process"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="3940d19d-55ef-4b3f-a7b6-3711b9b748af" name="IncidentCheck"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="a54bfea1-e547-4d30-b291-4c768068d987" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="request" name="SOAP Request" id="12b74122-bb31-4961-9ef4-5b40125b75cd"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>Request_ENDPOINTPortType_binding</con:interface><con:operation>process</con:operation><con:request name="SOAP Request" id="4cc51dfa-c6dc-4942-bb62-f5b59af89e9c" outgoingWss="Outgoing"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://AIC-Dev-brati.integration.ocp.oraclecloud.com:443/ic/ws/integration/v1/flows/osc/SERVICE_INCIDENTS/1.0/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://xmlns.oracle.com/apps/crmCommon/content/outboundMessage/types/" xmlns:acc="http://xmlns.oracle.com/apps/crmCommon/salesParties/accountService/" xmlns:com="http://xmlns.oracle.com/apps/crmCommon/salesParties/commonService/" xmlns:not="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" xmlns:not1="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/" xmlns:org="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/" xmlns:com1="/oracle/apps/cdm/foundation/custextn/views/common/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <typ:process>\r
+         <!--Zero or more repetitions:-->\r
+         <typ:Account>\r
+            <!--Optional:-->\r
+            <acc:PartyId>5</acc:PartyId>\r
+            <!--Optional:-->\r
+            <acc:PartyNumber>?</acc:PartyNumber>\r
+            <!--Optional:-->\r
+            <acc:SourceSystem>?</acc:SourceSystem>\r
+            <!--Optional:-->\r
+            <acc:SourceSystemReferenceValue>?</acc:SourceSystemReferenceValue>\r
+            <!--Optional:-->\r
+            <acc:OrganizationName>?</acc:OrganizationName>\r
+            <!--Optional:-->\r
+            <acc:UniqueNameSuffix>?</acc:UniqueNameSuffix>\r
+            <!--Optional:-->\r
+            <acc:PartyUniqueName>?</acc:PartyUniqueName>\r
+            <!--Optional:-->\r
+            <acc:Type>?</acc:Type>\r
+            <!--Optional:-->\r
+            <acc:OwnerPartyId>?</acc:OwnerPartyId>\r
+            <!--Optional:-->\r
+            <acc:OwnerPartyNumber>?</acc:OwnerPartyNumber>\r
+            <!--Optional:-->\r
+            <acc:OwnerEmailAddress>?</acc:OwnerEmailAddress>\r
+            <!--Optional:-->\r
+            <acc:OwnerName>?</acc:OwnerName>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactPartyId>?</acc:PrimaryContactPartyId>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactPartyNumber>?</acc:PrimaryContactPartyNumber>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactSourceSystem>?</acc:PrimaryContactSourceSystem>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactSourceSystemReferenceValue>?</acc:PrimaryContactSourceSystemReferenceValue>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactName>?</acc:PrimaryContactName>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactEmail>?</acc:PrimaryContactEmail>\r
+            <!--Optional:-->\r
+            <acc:PrimaryContactPhone>?</acc:PrimaryContactPhone>\r
+            <!--Optional:-->\r
+            <acc:ExistingCustomerFlag>false</acc:ExistingCustomerFlag>\r
+            <!--Optional:-->\r
+            <acc:ExistingCustomerFlagLastUpdateDate>?</acc:ExistingCustomerFlagLastUpdateDate>\r
+            <!--Optional:-->\r
+            <acc:NamedFlag>false</acc:NamedFlag>\r
+            <!--Optional:-->\r
+            <acc:LastAssignmentDate>?</acc:LastAssignmentDate>\r
+            <!--Optional:-->\r
+            <acc:LastAssignmentDateTime>?</acc:LastAssignmentDateTime>\r
+            <!--Optional:-->\r
+            <acc:AssignmentExceptionFlag>false</acc:AssignmentExceptionFlag>\r
+            <!--Optional:-->\r
+            <acc:SalesProfileStatus>?</acc:SalesProfileStatus>\r
+            <!--Optional:-->\r
+            <acc:IndustryCodeType>?</acc:IndustryCodeType>\r
+            <!--Optional:-->\r
+            <acc:IndustryCode>?</acc:IndustryCode>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountPartyId>?</acc:ParentAccountPartyId>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountPartyNumber>?</acc:ParentAccountPartyNumber>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountSourceSystem>?</acc:ParentAccountSourceSystem>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountSourceSystemReferenceValue>?</acc:ParentAccountSourceSystemReferenceValue>\r
+            <!--Optional:-->\r
+            <acc:ParentAccountName>?</acc:ParentAccountName>\r
+            <!--Optional:-->\r
+            <acc:YearEstablished>?</acc:YearEstablished>\r
+            <!--Optional:-->\r
+            <acc:ControlYear>?</acc:ControlYear>\r
+            <!--Optional:-->\r
+            <acc:YearIncorporated>?</acc:YearIncorporated>\r
+            <!--Optional:-->\r
+            <acc:StockSymbol>?</acc:StockSymbol>\r
+            <!--Optional:-->\r
+            <acc:FiscalYearendMonth>?</acc:FiscalYearendMonth>\r
+            <!--Optional:-->\r
+            <acc:CurrentFiscalYearPotentialRevenueAmount currencyCode="?">?</acc:CurrentFiscalYearPotentialRevenueAmount>\r
+            <!--Optional:-->\r
+            <acc:PreferredFunctionalCurrency>?</acc:PreferredFunctionalCurrency>\r
+            <!--Optional:-->\r
+            <acc:AnalysisFiscalYear>?</acc:AnalysisFiscalYear>\r
+            <!--Optional:-->\r
+            <acc:NextFiscalYearPotentialRevenueAmount currencyCode="?">?</acc:NextFiscalYearPotentialRevenueAmount>\r
+            <!--Optional:-->\r
+            <acc:TotalPaymentAmount currencyCode="?">?</acc:TotalPaymentAmount>\r
+            <!--Optional:-->\r
+            <acc:TaxpayerIdentificationNumber>?</acc:TaxpayerIdentificationNumber>\r
+            <!--Optional:-->\r
+            <acc:CertificationLevel>?</acc:CertificationLevel>\r
+            <!--Optional:-->\r
+            <acc:CertificationReasonCode>?</acc:CertificationReasonCode>\r
+            <!--Optional:-->\r
+            <acc:DUNSNumber>?</acc:DUNSNumber>\r
+            <!--Optional:-->\r
+            <acc:DUNSCreditRating>?</acc:DUNSCreditRating>\r
+            <!--Optional:-->\r
+            <acc:ParentDUNSNumber>?</acc:ParentDUNSNumber>\r
+            <!--Optional:-->\r
+            <acc:DomesticUltimateDUNSNumber>?</acc:DomesticUltimateDUNSNumber>\r
+            <!--Optional:-->\r
+            <acc:GlobalUltimateDUNSNumber>?</acc:GlobalUltimateDUNSNumber>\r
+            <!--Optional:-->\r
+            <acc:CEOName>?</acc:CEOName>\r
+            <!--Optional:-->\r
+            <acc:CEOTitle>?</acc:CEOTitle>\r
+            <!--Optional:-->\r
+            <acc:PublicPrivateOwnershipFlag>false</acc:PublicPrivateOwnershipFlag>\r
+            <!--Optional:-->\r
+            <acc:ImportIndicator>?</acc:ImportIndicator>\r
+            <!--Optional:-->\r
+            <acc:ExportIndicator>?</acc:ExportIndicator>\r
+            <!--Optional:-->\r
+            <acc:SmallBusinessIndicator>?</acc:SmallBusinessIndicator>\r
+            <!--Optional:-->\r
+            <acc:WomanOwnedIndicator>?</acc:WomanOwnedIndicator>\r
+            <!--Optional:-->\r
+            <acc:GeneralServicesAdministrationFlag>false</acc:GeneralServicesAdministrationFlag>\r
+            <!--Optional:-->\r
+            <acc:MinorityOwnedIndicator>?</acc:MinorityOwnedIndicator>\r
+            <!--Optional:-->\r
+            <acc:MinorityOwnedType>?</acc:MinorityOwnedType>\r
+            <!--Optional:-->\r
+            <acc:RentOrOwnIndicator>?</acc:RentOrOwnIndicator>\r
+            <!--Optional:-->\r
+            <acc:LaborSurplusIndicator>?</acc:LaborSurplusIndicator>\r
+            <!--Optional:-->\r
+            <acc:OutOfBusinessIndicator>?</acc:OutOfBusinessIndicator>\r
+            <!--Optional:-->\r
+            <acc:HQBranchIndicator>?</acc:HQBranchIndicator>\r
+            <!--Optional:-->\r
+            <acc:ParentOrSubsidiaryIndicator>?</acc:ParentOrSubsidiaryIndicator>\r
+            <!--Optional:-->\r
+            <acc:DisadvantageIndicator>?</acc:DisadvantageIndicator>\r
+            <!--Optional:-->\r
+            <acc:EmployeesAtPrimaryAddress>?</acc:EmployeesAtPrimaryAddress>\r
+            <!--Optional:-->\r
+            <acc:EmployeesAtPrimaryAddressEstimation>?</acc:EmployeesAtPrimaryAddressEstimation>\r
+            <!--Optional:-->\r
+            <acc:EmployeesAtPrimaryAddressMinimum>?</acc:EmployeesAtPrimaryAddressMinimum>\r
+            <!--Optional:-->\r
+            <acc:EmployeesAtPrimaryAddressText>?</acc:EmployeesAtPrimaryAddressText>\r
+            <!--Optional:-->\r
+            <acc:EmployeesTotal>?</acc:EmployeesTotal>\r
+            <!--Optional:-->\r
+            <acc:TotalEmployeesEstimatedIndicator>?</acc:TotalEmployeesEstimatedIndicator>\r
+            <!--Optional:-->\r
+            <acc:TotalEmployeesIndicator>?</acc:TotalEmployeesIndicator>\r
+            <!--Optional:-->\r
+            <acc:TotalEmployeesMinimumIndicator>?</acc:TotalEmployeesMinimumIndicator>\r
+            <!--Optional:-->\r
+            <acc:TotalEmployeesText>?</acc:TotalEmployeesText>\r
+            <!--Optional:-->\r
+            <acc:OrganizationSize>?</acc:OrganizationSize>\r
+            <!--Optional:-->\r
+            <acc:OrganizationType>?</acc:OrganizationType>\r
+            <!--Optional:-->\r
+            <acc:PrincipalTitle>?</acc:PrincipalTitle>\r
+            <!--Optional:-->\r
+            <acc:PrincipalName>?</acc:PrincipalName>\r
+            <!--Optional:-->\r
+            <acc:LegalStatus>?</acc:LegalStatus>\r
+            <!--Optional:-->\r
+            <acc:BusinessScope>?</acc:BusinessScope>\r
+            <!--Optional:-->\r
+            <acc:RegistrationType>?</acc:RegistrationType>\r
+            <!--Optional:-->\r
+            <acc:MissionStatement>?</acc:MissionStatement>\r
+            <!--Optional:-->\r
+            <acc:CorporationClass>?</acc:CorporationClass>\r
+            <!--Optional:-->\r
+            <acc:GrowthStrategyDescription>?</acc:GrowthStrategyDescription>\r
+            <!--Optional:-->\r
+            <acc:CongressionalDistrictCode>?</acc:CongressionalDistrictCode>\r
+            <!--Optional:-->\r
+            <acc:LineOfBusiness>?</acc:LineOfBusiness>\r
+            <!--Optional:-->\r
+            <acc:HomeCountry>?</acc:HomeCountry>\r
+            <!--Optional:-->\r
+            <acc:DoNotConfuseWith>?</acc:DoNotConfuseWith>\r
+            <!--Optional:-->\r
+            <acc:LocalActivityCode>?</acc:LocalActivityCode>\r
+            <!--Optional:-->\r
+            <acc:LocalActivityCodeType>?</acc:LocalActivityCodeType>\r
+            <!--Optional:-->\r
+            <acc:LocalBusinessIdentifier>?</acc:LocalBusinessIdentifier>\r
+            <!--Optional:-->\r
+            <acc:LocalBusinessIdentifierType>?</acc:LocalBusinessIdentifierType>\r
+            <!--Optional:-->\r
+            <acc:SiebelLocation>?</acc:SiebelLocation>\r
+            <!--Optional:-->\r
+            <acc:Comments>?</acc:Comments>\r
+            <!--Optional:-->\r
+            <acc:BusinessReport>cid:1551114103458</acc:BusinessReport>\r
+            <!--Optional:-->\r
+            <acc:CurrencyCode>?</acc:CurrencyCode>\r
+            <!--Optional:-->\r
+            <acc:CurcyConvRateType>?</acc:CurcyConvRateType>\r
+            <!--Optional:-->\r
+            <acc:CorpCurrencyCode>?</acc:CorpCurrencyCode>\r
+            <!--Optional:-->\r
+            <acc:DataCloudStatus>?</acc:DataCloudStatus>\r
+            <!--Optional:-->\r
+            <acc:LastEnrichmentDate>?</acc:LastEnrichmentDate>\r
+            <!--Optional:-->\r
+            <acc:PartyStatus>?</acc:PartyStatus>\r
+            <!--Optional:-->\r
+            <acc:CreatedByModule>HZ_WS</acc:CreatedByModule>\r
+            <!--Optional:-->\r
+            <acc:CreatedBy>?</acc:CreatedBy>\r
+            <!--Optional:-->\r
+            <acc:CreationDate>?</acc:CreationDate>\r
+            <!--Optional:-->\r
+            <acc:LastUpdateDate>?</acc:LastUpdateDate>\r
+            <!--Optional:-->\r
+            <acc:LastUpdateLogin>?</acc:LastUpdateLogin>\r
+            <!--Optional:-->\r
+            <acc:LastUpdatedBy>?</acc:LastUpdatedBy>\r
+            <!--Optional:-->\r
+            <acc:PreferredContactMethod>?</acc:PreferredContactMethod>\r
+            <!--Optional:-->\r
+            <acc:PhoneCountryCode>?</acc:PhoneCountryCode>\r
+            <!--Optional:-->\r
+            <acc:PhoneAreaCode>?</acc:PhoneAreaCode>\r
+            <!--Optional:-->\r
+            <acc:PhoneNumber>?</acc:PhoneNumber>\r
+            <!--Optional:-->\r
+            <acc:PhoneExtension>?</acc:PhoneExtension>\r
+            <!--Optional:-->\r
+            <acc:FormattedPhoneNumber>?</acc:FormattedPhoneNumber>\r
+            <!--Optional:-->\r
+            <acc:RawPhoneNumber>?</acc:RawPhoneNumber>\r
+            <!--Optional:-->\r
+            <acc:FaxCountryCode>?</acc:FaxCountryCode>\r
+            <!--Optional:-->\r
+            <acc:FaxAreaCode>?</acc:FaxAreaCode>\r
+            <!--Optional:-->\r
+            <acc:FaxNumber>?</acc:FaxNumber>\r
+            <!--Optional:-->\r
+            <acc:FaxExtension>?</acc:FaxExtension>\r
+            <!--Optional:-->\r
+            <acc:FormattedFaxNumber>?</acc:FormattedFaxNumber>\r
+            <!--Optional:-->\r
+            <acc:RawFaxNumber>?</acc:RawFaxNumber>\r
+            <!--Optional:-->\r
+            <acc:EmailFormat>?</acc:EmailFormat>\r
+            <!--Optional:-->\r
+            <acc:EmailAddress>?</acc:EmailAddress>\r
+            <!--Optional:-->\r
+            <acc:URL>?</acc:URL>\r
+            <!--Optional:-->\r
+            <acc:RecordSet>?</acc:RecordSet>\r
+            <!--Optional:-->\r
+            <acc:FavoriteAccountFlag>false</acc:FavoriteAccountFlag>\r
+            <!--Optional:-->\r
+            <acc:UpdateFlag>?</acc:UpdateFlag>\r
+            <!--Optional:-->\r
+            <acc:DeleteFlag>?</acc:DeleteFlag>\r
+            <!--Optional:-->\r
+            <acc:AddressNumber>?</acc:AddressNumber>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute1>?</acc:AddressElementAttribute1>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute2>?</acc:AddressElementAttribute2>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute3>?</acc:AddressElementAttribute3>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute4>?</acc:AddressElementAttribute4>\r
+            <!--Optional:-->\r
+            <acc:AddressElementAttribute5>?</acc:AddressElementAttribute5>\r
+            <!--Optional:-->\r
+            <acc:AddressLine1>?</acc:AddressLine1>\r
+            <!--Optional:-->\r
+            <acc:AddressLine2>?</acc:AddressLine2>\r
+            <!--Optional:-->\r
+            <acc:AddressLine3>?</acc:AddressLine3>\r
+            <!--Optional:-->\r
+            <acc:AddressLine4>?</acc:AddressLine4>\r
+            <!--Optional:-->\r
+            <acc:Building>?</acc:Building>\r
+            <!--Optional:-->\r
+            <acc:City>?</acc:City>\r
+            <!--Optional:-->\r
+            <acc:Country>?</acc:Country>\r
+            <!--Optional:-->\r
+            <acc:County>?</acc:County>\r
+            <!--Optional:-->\r
+            <acc:FloorNumber>?</acc:FloorNumber>\r
+            <!--Optional:-->\r
+            <acc:PostalCode>?</acc:PostalCode>\r
+            <!--Optional:-->\r
+            <acc:PostalPlus4Code>?</acc:PostalPlus4Code>\r
+            <!--Optional:-->\r
+            <acc:Province>?</acc:Province>\r
+            <!--Optional:-->\r
+            <acc:State>?</acc:State>\r
+            <!--Optional:-->\r
+            <acc:Mailstop>?</acc:Mailstop>\r
+            <!--Optional:-->\r
+            <acc:AddressLinesPhonetic>?</acc:AddressLinesPhonetic>\r
+            <!--Optional:-->\r
+            <acc:AddressType>?</acc:AddressType>\r
+            <!--Optional:-->\r
+            <acc:PrimaryAddress>\r
+               <!--Optional:-->\r
+               <com:AddressId>?</com:AddressId>\r
+               <!--Optional:-->\r
+               <com:AddressNumber>?</com:AddressNumber>\r
+               <!--Optional:-->\r
+               <com:SourceSystem>?</com:SourceSystem>\r
+               <!--Optional:-->\r
+               <com:SourceSystemReferenceValue>?</com:SourceSystemReferenceValue>\r
+               <!--Optional:-->\r
+               <com:LocationId>?</com:LocationId>\r
+               <!--Optional:-->\r
+               <com:PartyId>?</com:PartyId>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute1>?</com:AddressElementAttribute1>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute2>?</com:AddressElementAttribute2>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute3>?</com:AddressElementAttribute3>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute4>?</com:AddressElementAttribute4>\r
+               <!--Optional:-->\r
+               <com:AddressElementAttribute5>?</com:AddressElementAttribute5>\r
+               <!--Optional:-->\r
+               <com:AddressLine1>?</com:AddressLine1>\r
+               <!--Optional:-->\r
+               <com:AddressLine2>?</com:AddressLine2>\r
+               <!--Optional:-->\r
+               <com:AddressLine3>?</com:AddressLine3>\r
+               <!--Optional:-->\r
+               <com:AddressLine4>?</com:AddressLine4>\r
+               <!--Optional:-->\r
+               <com:Building>?</com:Building>\r
+               <!--Optional:-->\r
+               <com:City>?</com:City>\r
+               <!--Optional:-->\r
+               <com:Country>?</com:Country>\r
+               <!--Optional:-->\r
+               <com:County>?</com:County>\r
+               <!--Optional:-->\r
+               <com:FloorNumber>?</com:FloorNumber>\r
+               <!--Optional:-->\r
+               <com:PostalCode>?</com:PostalCode>\r
+               <!--Optional:-->\r
+               <com:PostalPlus4Code>?</com:PostalPlus4Code>\r
+               <!--Optional:-->\r
+               <com:Province>?</com:Province>\r
+               <!--Optional:-->\r
+               <com:State>?</com:State>\r
+               <!--Optional:-->\r
+               <com:Latitude>?</com:Latitude>\r
+               <!--Optional:-->\r
+               <com:Longitude>?</com:Longitude>\r
+               <!--Optional:-->\r
+               <com:Mailstop>?</com:Mailstop>\r
+               <!--Optional:-->\r
+               <com:AddressLinesPhonetic>?</com:AddressLinesPhonetic>\r
+               <!--Optional:-->\r
+               <com:Comments>?</com:Comments>\r
+               <!--Optional:-->\r
+               <com:Description>?</com:Description>\r
+               <!--Optional:-->\r
+               <com:DateValidated>?</com:DateValidated>\r
+               <!--Optional:-->\r
+               <com:HouseType>?</com:HouseType>\r
+               <!--Optional:-->\r
+               <com:LocationDirections>?</com:LocationDirections>\r
+               <!--Optional:-->\r
+               <com:ValidatedFlag>?</com:ValidatedFlag>\r
+               <!--Optional:-->\r
+               <com:ValidationStatusCode>?</com:ValidationStatusCode>\r
+               <!--Optional:-->\r
+               <com:FormattedAddress>?</com:FormattedAddress>\r
+               <!--Optional:-->\r
+               <com:FormattedMultiLineAddress>?</com:FormattedMultiLineAddress>\r
+               <!--Optional:-->\r
+               <com:CreatedBy>?</com:CreatedBy>\r
+               <!--Optional:-->\r
+               <com:CreationDate>?</com:CreationDate>\r
+               <!--Optional:-->\r
+               <com:LastUpdateDate>?</com:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <com:LastUpdateLogin>?</com:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <com:LastUpdatedBy>?</com:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <com:DeleteFlag>?</com:DeleteFlag>\r
+               <!--Optional:-->\r
+               <com:CorpCurrencyCode>?</com:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <com:CurcyConvRateType>?</com:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <com:CurrencyCode>?</com:CurrencyCode>\r
+               <!--Optional:-->\r
+               <com:PartySiteEO_XSD_c>?</com:PartySiteEO_XSD_c>\r
+            </acc:PrimaryAddress>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:SalesTeamMember>\r
+               <!--Optional:-->\r
+               <com:TeamMemberId>?</com:TeamMemberId>\r
+               <!--Optional:-->\r
+               <com:SalesProfileId>?</com:SalesProfileId>\r
+               <!--Optional:-->\r
+               <com:ResourceId>?</com:ResourceId>\r
+               <!--Optional:-->\r
+               <com:MemberFunctionCode>?</com:MemberFunctionCode>\r
+               <!--Optional:-->\r
+               <com:AccessLevelCode>?</com:AccessLevelCode>\r
+               <!--Optional:-->\r
+               <com:LockAssignmentFlag>false</com:LockAssignmentFlag>\r
+               <!--Optional:-->\r
+               <com:AssignmentTypeCode>MANUAL</com:AssignmentTypeCode>\r
+               <!--Optional:-->\r
+               <com:CreationDate>?</com:CreationDate>\r
+               <!--Optional:-->\r
+               <com:CreatedBy>?</com:CreatedBy>\r
+               <!--Optional:-->\r
+               <com:LastUpdateDate>?</com:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <com:LastUpdateLogin>?</com:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <com:LastUpdatedBy>?</com:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <com:UserLastUpdateDate>?</com:UserLastUpdateDate>\r
+               <!--Optional:-->\r
+               <com:StartDateActive>?</com:StartDateActive>\r
+               <!--Optional:-->\r
+               <com:EndDateActive>?</com:EndDateActive>\r
+               <!--Optional:-->\r
+               <com:ResourcePartyNumber>?</com:ResourcePartyNumber>\r
+               <!--Optional:-->\r
+               <com:ResourceEmailAddress>?</com:ResourceEmailAddress>\r
+               <!--Optional:-->\r
+               <com:ResourceRoleName>?</com:ResourceRoleName>\r
+               <!--Optional:-->\r
+               <com:ResourceOrgName>?</com:ResourceOrgName>\r
+               <!--Optional:-->\r
+               <com:ResourceName>?</com:ResourceName>\r
+               <!--Optional:-->\r
+               <com:ResourcePhoneNumber>?</com:ResourcePhoneNumber>\r
+            </acc:SalesTeamMember>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:Note>\r
+               <!--Optional:-->\r
+               <not:NoteId>?</not:NoteId>\r
+               <!--Optional:-->\r
+               <not:SourceObjectCode>?</not:SourceObjectCode>\r
+               <!--Optional:-->\r
+               <not:SourceObjectId>?</not:SourceObjectId>\r
+               <!--Optional:-->\r
+               <not:PartyName>?</not:PartyName>\r
+               <!--Optional:-->\r
+               <not:NoteTxt>cid:658166180508</not:NoteTxt>\r
+               <!--Optional:-->\r
+               <not:NoteTypeCode>?</not:NoteTypeCode>\r
+               <!--Optional:-->\r
+               <not:VisibilityCode>?</not:VisibilityCode>\r
+               <!--Optional:-->\r
+               <not:CreatorPartyId>?</not:CreatorPartyId>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeCategory>?</not:NoteAttributeCategory>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid1>?</not:NoteAttributeUid1>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid2>?</not:NoteAttributeUid2>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid3>?</not:NoteAttributeUid3>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid4>?</not:NoteAttributeUid4>\r
+               <!--Optional:-->\r
+               <not:NoteAttributeUid5>?</not:NoteAttributeUid5>\r
+               <!--Optional:-->\r
+               <not:CreatedBy>?</not:CreatedBy>\r
+               <!--Optional:-->\r
+               <not:CreationDate>?</not:CreationDate>\r
+               <!--Optional:-->\r
+               <not:LastUpdateDate>?</not:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <not:PartyId>?</not:PartyId>\r
+               <!--Optional:-->\r
+               <not:CorpCurrencyCode>?</not:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <not:CurcyConvRateType>?</not:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <not:CurrencyCode>?</not:CurrencyCode>\r
+               <!--Optional:-->\r
+               <not:ContactRelationshipId>?</not:ContactRelationshipId>\r
+               <!--Optional:-->\r
+               <not:LastUpdatedBy>?</not:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <not:LastUpdateLogin>?</not:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <not:UpdateFlag>?</not:UpdateFlag>\r
+               <!--Optional:-->\r
+               <not:DeleteFlag>?</not:DeleteFlag>\r
+               <!--Optional:-->\r
+               <not:Dff>\r
+                  <!--Optional:-->\r
+                  <not1:NoteId>?</not1:NoteId>\r
+                  <!--Optional:-->\r
+                  <not1:__FLEX_Context>?</not1:__FLEX_Context>\r
+                  <!--Optional:-->\r
+                  <not1:__FLEX_Context_DisplayValue>?</not1:__FLEX_Context_DisplayValue>\r
+                  <!--Optional:-->\r
+                  <not1:_FLEX_NumOfSegments>?</not1:_FLEX_NumOfSegments>\r
+               </not:Dff>\r
+            </acc:Note>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_CustomerType_c>?</acc:OrganizationDEO_CustomerType_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_CustomerType_cMeaning>?</acc:OrganizationDEO_CustomerType_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_StrategicPlan_Id_c>?</acc:OrganizationDEO_StrategicPlan_Id_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_StrategicPlan_c>?</acc:OrganizationDEO_StrategicPlan_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_StrategicContact_Id_c>?</acc:OrganizationDEO_StrategicContact_Id_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_StrategicContact_c>?</acc:OrganizationDEO_StrategicContact_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_AccountPlanStatus_c>?</acc:OrganizationDEO_AccountPlanStatus_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_AccountPlanStatus_cMeaning>?</acc:OrganizationDEO_AccountPlanStatus_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_PlanManagerCalc_c>?</acc:OrganizationDEO_PlanManagerCalc_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_Industry_c>?</acc:OrganizationDEO_Industry_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSNumberOfBeds_c>?</acc:OrganizationDEO_LSNumberOfBeds_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSNumberOfPhysicians_c>?</acc:OrganizationDEO_LSNumberOfPhysicians_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSCallFrequency_c>?</acc:OrganizationDEO_LSCallFrequency_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSRoute_c>?</acc:OrganizationDEO_LSRoute_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSRoute_cMeaning>?</acc:OrganizationDEO_LSRoute_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSAccountType_c>?</acc:OrganizationDEO_LSAccountType_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_LSAccountType_cMeaning>?</acc:OrganizationDEO_LSAccountType_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_InstitutionType_c>?</acc:OrganizationDEO_InstitutionType_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_InstitutionType_cMeaning>?</acc:OrganizationDEO_InstitutionType_cMeaning>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSTwitterProfileURL_c>?</acc:OrganizationDEO_DaaSTwitterProfileURL_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSTwitterFollowers_c>?</acc:OrganizationDEO_DaaSTwitterFollowers_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSYouTubeURL_c>?</acc:OrganizationDEO_DaaSYouTubeURL_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSFaceBookURL_c>?</acc:OrganizationDEO_DaaSFaceBookURL_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSYouTubeViews_c>?</acc:OrganizationDEO_DaaSYouTubeViews_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_CurrentSatisfactionLevel_c>?</acc:OrganizationDEO_CurrentSatisfactionLevel_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_CurrentlyReferring_c>?</acc:OrganizationDEO_CurrentlyReferring_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_Latitude_c>?</acc:OrganizationDEO_Latitude_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_Longitude_c>?</acc:OrganizationDEO_Longitude_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_DaaSFacebookProfileURL_c>?</acc:OrganizationDEO_DaaSFacebookProfileURL_c>\r
+            <!--Optional:-->\r
+            <acc:OrganizationDEO_XSD_c>?</acc:OrganizationDEO_XSD_c>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:OrganizationDEO_SWOTAnalysisCollection_c>\r
+               <!--Optional:-->\r
+               <org:Id>?</org:Id>\r
+               <!--Optional:-->\r
+               <org:RecordName>?</org:RecordName>\r
+               <!--Optional:-->\r
+               <org:CreatedBy>?</org:CreatedBy>\r
+               <!--Optional:-->\r
+               <org:CreationDate>?</org:CreationDate>\r
+               <!--Optional:-->\r
+               <org:LastUpdatedBy>?</org:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <org:LastUpdateDate>?</org:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <org:ObjectVersionNumber>?</org:ObjectVersionNumber>\r
+               <!--Optional:-->\r
+               <org:OrganizationProfile_Id_c>?</org:OrganizationProfile_Id_c>\r
+               <!--Optional:-->\r
+               <org:RecordNumber>?</org:RecordNumber>\r
+               <!--Optional:-->\r
+               <org:LastUpdateLogin>?</org:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <org:CpdrfVerSor>?</org:CpdrfVerSor>\r
+               <!--Optional:-->\r
+               <org:ConflictId>?</org:ConflictId>\r
+               <!--Optional:-->\r
+               <org:UserLastUpdateDate>?</org:UserLastUpdateDate>\r
+               <!--Optional:-->\r
+               <org:CpdrfLastUpd>?</org:CpdrfLastUpd>\r
+               <!--Optional:-->\r
+               <org:CpdrfVerPillar>?</org:CpdrfVerPillar>\r
+               <!--Optional:-->\r
+               <org:JobDefinitionPackage>?</org:JobDefinitionPackage>\r
+               <!--Optional:-->\r
+               <org:RequestId>?</org:RequestId>\r
+               <!--Optional:-->\r
+               <org:JobDefinitionName>?</org:JobDefinitionName>\r
+               <!--Optional:-->\r
+               <org:CurrencyCode>?</org:CurrencyCode>\r
+               <!--Optional:-->\r
+               <org:CurcyConvRateType>?</org:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <org:CorpCurrencyCode>?</org:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <org:IsOwner>?</org:IsOwner>\r
+               <!--Optional:-->\r
+               <org:EntryType_c>?</org:EntryType_c>\r
+               <!--Optional:-->\r
+               <org:EntryType_cMeaning>?</org:EntryType_cMeaning>\r
+               <!--Optional:-->\r
+               <org:SWOTEntry_c>cid:493870804186</org:SWOTEntry_c>\r
+            </acc:OrganizationDEO_SWOTAnalysisCollection_c>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:OrganizationDEO_IncidentCollection_c>\r
+               <!--Optional:-->\r
+               <org:Id>?</org:Id>\r
+               <!--Optional:-->\r
+               <org:RecordName>?</org:RecordName>\r
+               <!--Optional:-->\r
+               <org:CreatedBy>?</org:CreatedBy>\r
+               <!--Optional:-->\r
+               <org:CreationDate>?</org:CreationDate>\r
+               <!--Optional:-->\r
+               <org:LastUpdatedBy>?</org:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <org:LastUpdateDate>?</org:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <org:ObjectVersionNumber>?</org:ObjectVersionNumber>\r
+               <!--Optional:-->\r
+               <org:OrganizationProfile_Id_c>?</org:OrganizationProfile_Id_c>\r
+               <!--Optional:-->\r
+               <org:RecordNumber>?</org:RecordNumber>\r
+               <!--Optional:-->\r
+               <org:LastUpdateLogin>?</org:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <org:CpdrfVerSor>?</org:CpdrfVerSor>\r
+               <!--Optional:-->\r
+               <org:ConflictId>?</org:ConflictId>\r
+               <!--Optional:-->\r
+               <org:UserLastUpdateDate>?</org:UserLastUpdateDate>\r
+               <!--Optional:-->\r
+               <org:CpdrfLastUpd>?</org:CpdrfLastUpd>\r
+               <!--Optional:-->\r
+               <org:CpdrfVerPillar>?</org:CpdrfVerPillar>\r
+               <!--Optional:-->\r
+               <org:JobDefinitionPackage>?</org:JobDefinitionPackage>\r
+               <!--Optional:-->\r
+               <org:RequestId>?</org:RequestId>\r
+               <!--Optional:-->\r
+               <org:JobDefinitionName>?</org:JobDefinitionName>\r
+               <!--Optional:-->\r
+               <org:CurrencyCode>?</org:CurrencyCode>\r
+               <!--Optional:-->\r
+               <org:CurcyConvRateType>?</org:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <org:CorpCurrencyCode>?</org:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <org:IsOwner>?</org:IsOwner>\r
+            </acc:OrganizationDEO_IncidentCollection_c>\r
+            <!--Zero or more repetitions:-->\r
+            <acc:OrganizationDEO_AccountPlan_Account_Tgt_OrganizationToAccountPlan_Account_c_Tgt>\r
+               <!--Optional:-->\r
+               <com1:Id>?</com1:Id>\r
+               <!--Optional:-->\r
+               <com1:RecordName>?</com1:RecordName>\r
+               <!--Optional:-->\r
+               <com1:CreatedBy>?</com1:CreatedBy>\r
+               <!--Optional:-->\r
+               <com1:CreationDate>?</com1:CreationDate>\r
+               <!--Optional:-->\r
+               <com1:LastUpdatedBy>?</com1:LastUpdatedBy>\r
+               <!--Optional:-->\r
+               <com1:LastUpdateDate>?</com1:LastUpdateDate>\r
+               <!--Optional:-->\r
+               <com1:ObjectVersionNumber>?</com1:ObjectVersionNumber>\r
+               <!--Optional:-->\r
+               <com1:RecordNumber>?</com1:RecordNumber>\r
+               <!--Optional:-->\r
+               <com1:LastUpdateLogin>?</com1:LastUpdateLogin>\r
+               <!--Optional:-->\r
+               <com1:CpdrfVerSor>?</com1:CpdrfVerSor>\r
+               <!--Optional:-->\r
+               <com1:ConflictId>?</com1:ConflictId>\r
+               <!--Optional:-->\r
+               <com1:UserLastUpdateDate>?</com1:UserLastUpdateDate>\r
+               <!--Optional:-->\r
+               <com1:CpdrfLastUpd>?</com1:CpdrfLastUpd>\r
+               <!--Optional:-->\r
+               <com1:CpdrfVerPillar>?</com1:CpdrfVerPillar>\r
+               <!--Optional:-->\r
+               <com1:JobDefinitionPackage>?</com1:JobDefinitionPackage>\r
+               <!--Optional:-->\r
+               <com1:RequestId>?</com1:RequestId>\r
+               <!--Optional:-->\r
+               <com1:JobDefinitionName>?</com1:JobDefinitionName>\r
+               <!--Optional:-->\r
+               <com1:CurrencyCode>?</com1:CurrencyCode>\r
+               <!--Optional:-->\r
+               <com1:CurcyConvRateType>?</com1:CurcyConvRateType>\r
+               <!--Optional:-->\r
+               <com1:CorpCurrencyCode>?</com1:CorpCurrencyCode>\r
+               <!--Optional:-->\r
+               <com1:IsOwner>?</com1:IsOwner>\r
+               <!--Optional:-->\r
+               <com1:AccountPlan_Id_Src_AccountPlan_cToAccountPlan_Account_c>?</com1:AccountPlan_Id_Src_AccountPlan_cToAccountPlan_Account_c>\r
+               <!--Optional:-->\r
+               <com1:Organization_Id_Tgt_OrganizationToAccountPlan_Account_c>?</com1:Organization_Id_Tgt_OrganizationToAccountPlan_Account_c>\r
+               <!--Optional:-->\r
+               <com1:AccountOwner_c>?</com1:AccountOwner_c>\r
+            </acc:OrganizationDEO_AccountPlan_Account_Tgt_OrganizationToAccountPlan_Account_c_Tgt>\r
+            <!--Optional:-->\r
+            <acc:SalesAccountEO_Route_c>?</acc:SalesAccountEO_Route_c>\r
+            <!--Optional:-->\r
+            <acc:SalesAccountEO_VisitFreq_c>?</acc:SalesAccountEO_VisitFreq_c>\r
+         </typ:Account>\r
+      </typ:process>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2596a69d-62b2-4eb4-9522-494ca9af7895"/><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>true</con:preemptive><con:authType>Preemptive</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer><con:outgoing><con:name>Outgoing</con:name><con:username>bratisankar1@gmail.com</con:username><con:entry type="Timestamp"><con:configuration><timeToLive>100000</timeToLive><strictTimestamp>true</strictTimestamp></con:configuration></con:entry><con:entry type="Username" username="bratisankar1@gmail.com" password="MyOracleCloudP@ssword123"><con:configuration><addCreated>true</addCreated><addNonce>true</addNonce><passwordType>PasswordText</passwordType></con:configuration></con:entry></con:outgoing></con:wssContainer><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
